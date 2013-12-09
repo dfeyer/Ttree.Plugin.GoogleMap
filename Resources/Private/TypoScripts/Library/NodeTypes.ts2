@@ -1,0 +1,21 @@
+prototype(Ttree.Plugin.GoogleMap:GoogleMap) >
+prototype(Ttree.Plugin.GoogleMap:GoogleMap) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Ttree.Plugin.GoogleMap/Private/Templates/NodeTypes/GoogleMap.html'
+
+	node = ${node}
+
+	baseIdentifier = ${String.toLowerCase(String.pregReplace(q(node).property('_name'), '/[[:^alnum:]]/', '-'))}
+
+	mapIdentifier = 'map-canvas'
+	mapIdentifier.@process.suffix = ${String.trim(value + '-' + this.baseIdentifier)}
+
+	longitude = ${q(node).property('longitude')}
+	latitude = ${q(node).property('latitude')}
+	zoomlevel = ${q(node).property('zoomlevel')}
+	infoheadl = ${q(node).property('infoheadl')}
+	infotext = ${q(node).property('infotext')}
+	width = ${q(node).property('width')}
+	height = ${q(node).property('height')}
+	popupHeight = ${q(node).property('popupHeight')}
+	popupWidth = ${q(node).property('popupWidth')}
+}
